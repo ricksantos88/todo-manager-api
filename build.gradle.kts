@@ -33,7 +33,7 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	// Security
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
-	implementation("org.springframework.boot:spring-boot-starter-security")
+//	implementation("org.springframework.boot:spring-boot-starter-security")
 
 	// Tests
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
