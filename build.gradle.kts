@@ -31,7 +31,7 @@ dependencies {
 	runtimeOnly("org.postgresql:postgresql")
 	implementation("org.flywaydb:flyway-core")
 	annotationProcessor("org.projectlombok:lombok")
-	//Security
+	// Security
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
 	implementation("org.springframework.boot:spring-boot-starter-security")
 
