@@ -1,7 +1,10 @@
 package br.com.todo.manager.database.entities;
 
 
+import br.com.todo.manager.model.dtos.RoleDto;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,6 +12,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "roles")
+@Data
+@NoArgsConstructor
 public class Role implements Serializable {
 
     @Id
@@ -21,4 +26,7 @@ public class Role implements Serializable {
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
 
+    public Role(RoleDto roleDto) {
+        setName(roleDto.getName());
+    }
 }
