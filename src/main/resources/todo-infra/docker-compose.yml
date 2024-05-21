@@ -2,16 +2,14 @@ version: '3.8'
 
 services:
   db:
-    image: postgres:latest
-    container_name: postgres_container
+    image: postgres:13
+    container_name: todo_db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: todo_database
     ports:
       - "5432:5432"
-    volumes:
-      - C:\Docker-Volumes\todo-manager-api:/var/lib/postgresql/data
 
 volumes:
   postgres_data:
