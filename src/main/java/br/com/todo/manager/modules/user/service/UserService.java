@@ -5,6 +5,7 @@ import br.com.todo.manager.model.dtos.UserDto;
 import br.com.todo.manager.model.dtos.UserResponseDto;
 import br.com.todo.manager.modules.user.provider.UserProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -14,16 +15,19 @@ public class UserService {
 
     @Autowired
     private UserProvider userProvider;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public UserResponseDto createUser(UserDto userDto) {
         User user = new User(userDto);
+        user.setSecret(passwordEncoder.encode(user.getSecret()));
         return new UserResponseDto(userProvider.createUser(user));
     }
 
     public UserResponseDto updateUser(UUID userId, UserDto userDto) throws Exception {
         User userSaved = getUserById(userId);
         userSaved.setUsername(userDto.getUsername());
-        userSaved.setSecret(userDto.getSecret());
+        userSaved.setSecret(passwordEncoder.encode(userDto.getSecret()));
         return new UserResponseDto(userProvider.updateUser(userSaved));
     }
 

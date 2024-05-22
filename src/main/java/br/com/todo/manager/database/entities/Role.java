@@ -2,6 +2,7 @@ package br.com.todo.manager.database.entities;
 
 
 import br.com.todo.manager.model.dtos.RoleDto;
+import br.com.todo.manager.model.enums.RolePermissionsEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,9 @@ public class Role implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(unique = true, length = 20)
-    private String name;
+    @Column
+    @Enumerated(EnumType.STRING)
+    private RolePermissionsEnum name;
 
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
